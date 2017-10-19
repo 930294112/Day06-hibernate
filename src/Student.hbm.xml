@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <!--对象映射文件-->
+    <!--class:定义当前的实体类与数据库表的关系
+        name:实体类的全路径
+        table:实体类对应的表名,如果不写则与实体类同名
+        catalog:数据库名称,一般不写-->
+    <class name="com.lanou.domain.Student" table="student">
+        <!--id:主键生成策略
+            name:实体类中的属性名称
+            column:数据库表中对应的列名,如果不指定则与实体类属性名保持一致-->
+        <id name="id" column="id">
+            <!--主键生成方式,native:采用本地策略,即如果数据库用mysql则生成主键用的identity的方式,
+            如果数据库用的Oracle则主键生成策略用sequence-->
+            <generator class="native"/>
+        </id>
+        <!--property:定义实体类中的属性与数据库表中的列的对应关系
+            name:实体类属性名称
+            column:数据库表中的列名,如果不写则取实体类中的属性名
+            type:指定该列所对应的类型,如果不指定则取实体类中的属性类型,通常省略
+            length:指定该列的数据长度,通常省略-->
+        <property name="sname" column="name" type="java.lang.String" length="30"/>
+        <property name="gender"/>
+        <property name="age"/>
+
+    </class>
+
+</hibernate-mapping>

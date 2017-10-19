@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC
+    "-//Hibernate/Hibernate Configuration DTD//EN"
+    "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+  <session-factory>
+    <!--连接的数据库地址-->
+    <property name="connection.url">jdbc:mysql://localhost:3306/hibernate</property>
+    <!--数据库驱动-->
+    <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
+    <!--数据库连接用户名-->
+    <property name="connection.username">root</property>
+    <!--数据库连接密码-->
+    <property name="connection.password">123456</property>
+
+    <!--可选项配置-->
+    <!--配置每次运行表的生成策略
+      create:每次运行都生成新的表,一般用于测试
+      create-drop:每次运行都生成新的表,在运行结束再把生成的表删除
+      update:如果有表则更新表,如果没有则创建表
+      validate:如果有表则验证表,如果表的结构不一致,则抛出异常-->
+    <property name="hibernate.hbm2ddl.auto">update</property>
+    <!--每次执行sql语句时,都在控制台显示sql语句-->
+    <property name="hibernate.show_sql">true</property>
+    <!--每次控制台显示sql语句时将sql语句进行格式化-->
+    <property name="hibernate.format_sql">true</property>
+    <!--sql语句执行的时候底层转换的方言是什么-->
+    <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+    <!-- DB schema will be updated if needed -->
+    <!-- <property name="hbm2ddl.auto">update</property> -->
+
+    <!--将实体类映射文件引入hibernate配置文件中-->
+    <mapping resource="Student.hbm.xml"/>
+  </session-factory>
+</hibernate-configuration>
